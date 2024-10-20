@@ -3,11 +3,15 @@
   hosts: localhost
   gather_facts: false
   vars:
-    device_type: "Router"
-    devices: 
-      - "R1"
-      - "R2"
-      - "R3"
+    # device_type: "{{ vik }}"
+    # devices: 
+    #   - "R1"
+    #   - "R2"
+    #   - "R3"
+    # devices: 
+    #   - "{{R1}}"
+    #   - "{{R2}}"
+    #   - "{{R3}}"
     device_creds: 
       user_name: "admin"
       password: "ansible"
@@ -17,11 +21,12 @@
   tasks: #syntax
     - name:  "1010 - OUTPUT DEVICE TYPE"
       debug: #keyword just lika a print statement
-        var: device_type
+        var: vik
+        # msg: "{{ vik }}" #For jinja templating we need to use it with msg: and if there is only variable then we can use var: 
 
     - name: "1020 - OUTPUT DEVICE DATA"
       debug :            
-        var: devices
+        var: device_list
 
     - name: "1030 - OUTPUT DEVICE CREDS"
       debug:
